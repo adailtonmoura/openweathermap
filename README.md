@@ -5,6 +5,8 @@ I did not follow the design standards, it is worth remembering that this is just
 This is a website that, when clicking on the map, the user receives the temperature of the place.
 
 
+<img src="https://github.com/adailtonmoura/openweathermap/blob/master/img.png">
+
 # Getting start 
 
 You need a mapbox api key and an openweathermap api key
@@ -33,4 +35,5 @@ replace with your API keys
   # Inspired by 
   
   https://github.com/lucasmontano
+  
   https://github.com/lucasmontano/openweathermap
