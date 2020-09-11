@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Get temperature in map</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="map"></div>
+
+	<script>
+			mapboxgl.accessToken =
+			'yourApiKey';
+		var map = new mapboxgl.Map({
+			container: 'map', // container id
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-51.31606293441851, -12.71374940362179], // starting position
+			zoom: 2 // starting zoom
+		});
+
+		map.on('click', function (e) {
+			let lat = e.lngLat.lat;
+			let long = e.lngLat.lng;
+			$.ajax({
+				type: "get",
+				url: `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=pt_br&appid=YOUR API KEY`,
+				data: "data",
+				dataType: "json",
+				success: function (response) {
+
+					var temp = response.main.temp
+					var tempCelcius = Math.trunc(temp - 273.15);
+					var imgUrl = "http://openweathermap.org/img/wn/" + response.weather[0].icon +
+						"@2x.png"
+
+					var popup = new mapboxgl.Popup({
+							className: 'popup'
+						})
+						.setLngLat(e.lngLat)
+						.setHTML(
+							"<div class='header'><p class ='city' >" + response.name + "</p></div>"+
+							"<div class='content'><p class='description'>" + response.weather[0].description +"</p></div>"+
+							"<div class='footer'><p class='temp'>" + tempCelcius + " °C</p> <img  src=" + imgUrl + " class='img'></div>")
+						.setMaxWidth("300px")
+						.addTo(map);
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

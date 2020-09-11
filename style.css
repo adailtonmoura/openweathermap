@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.popup{
+    box-shadow: black;
+}
+.mapboxgl-popup-content{
+    background-color: rgba(0, 0, 0, 0.342);
+}
+.mapboxgl-popup-tip {
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: none !important;
+}
+.header .city{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.header{
+    margin: 10px;
+}
+
+.footer{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.img{
+    width: 30px;
+    height: 30px;
+}
+.temp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    font-size: 1.5rem;
+    color: white;
+    margin: 0px;
+}
+
+
