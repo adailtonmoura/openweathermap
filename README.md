@@ -1,6 +1,6 @@
 # Introducion
 
-I did not follow the design standards, it is worth remembering that this is just a test.
+I did not follow the design patterns, it is worth remembering that this is just a test.
 
 This is a website that, when clicking on the map, the user receives the temperature of the place.
 
